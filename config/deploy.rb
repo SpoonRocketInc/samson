@@ -20,6 +20,8 @@ set :format, :pretty
 set :linked_files, %w{config/database.yml .env}
 set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system cached_repos}
 
+set :bundle_without, %w{development test postgres sqlite}.join(' ')
+
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
