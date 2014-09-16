@@ -76,6 +76,7 @@ Samson::Application.routes.draw do
     post "/tddium/:token" => "tddium#create", as: :tddium_deploy
     post "/jenkins/:token" => "jenkins#create", as: :jenkins_deploy
     post "/github/:token" => "github#create", as: :github_deploy
+    post "/codeship/:token" => "codeship#create", as: :codeship_deploy
   end
 
   get '/ping', to: 'ping#show'
