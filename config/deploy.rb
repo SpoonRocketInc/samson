@@ -18,7 +18,7 @@ set :format, :pretty
 # set :pty, true
 
 set :linked_files, %w{config/database.yml .env}
-set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system cached_repos}
+set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets cached_repos}
 
 set :bundle_without, %w{development test postgres sqlite}.join(' ')
 
