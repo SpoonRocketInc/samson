@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
   end
 
   def build_release(attrs = {})
-    latest_release_number = releases.last.try(:number) || 0
+    latest_release_number = retrieve_latest_release_number
     release_number = latest_release_number + 1
     releases.build(attrs.merge(number: release_number))
   end
@@ -106,6 +106,14 @@ class Project < ActiveRecord::Base
   end
 
   private
+
+  def retrieve_latest_release_number
+    if heroku_app_name.present?
+      heroku_release_number = `heroku releases --app #{heroku_app_name} | sed -n 2p | awk '{print $1}'`.strip
+      latest_release_number = heroku_release_number.match(/v(\d+)/)[1].to_i rescue nil
+    end
+    latest_release_number ||= releases.last.try(:number) || 0
+  end
 
   def permalink_base
     repository_url.to_s.split('/').last.to_s.sub(/\.git/, '')
