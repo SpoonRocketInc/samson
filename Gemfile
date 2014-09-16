@@ -29,6 +29,9 @@ gem 'active_model_serializers', '~> 0.8.0'
 gem 'sawyer', '~> 0.5'
 gem 'sse-rails-engine'
 
+gem 'dotenv-deployment'
+gem "dotenv"
+
 # Logging
 gem 'lograge'
 gem 'logstash-event'
@@ -90,6 +93,11 @@ group :development, :staging do
   gem "binding_of_caller"
   gem 'better_errors'
   gem 'rack-mini-profiler'
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do
