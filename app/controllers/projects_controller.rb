@@ -79,6 +79,7 @@ class ProjectsController < ApplicationController
       :repository_url,
       :description,
       :owner,
+      :heroku_app_name,
       :permalink,
       :release_branch,
       stages_attributes: [
