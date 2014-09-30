@@ -1,0 +1,7 @@
+<% if pull_requests.nil? || pull_requests.empty? %>
+  <p>There are no pull requests in this <%= type %>.</p>
+<% else %>
+  <% pull_requests.each do |pr| %>
+    <h4><strong>#<%= pr.number %></strong> <%= link_to pr.title, pr.url %></h4>
+  <% end %>
+<% end %>
