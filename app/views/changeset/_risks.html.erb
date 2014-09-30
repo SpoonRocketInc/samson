@@ -4,7 +4,7 @@
   pull request description. Anything following that heading will be considered part of the risks section.</p>
 <% else %>
   <% pull_requests.each do |pr| %>
-    <h5><strong>#<%= pr.number %></strong> <%= link_to pr.title, pr.url %> <%= github_users(pr.users) %></h5>
+    <h4><strong>#<%= pr.number %></strong> <%= link_to pr.title, pr.url %></h4>
     <%= markdown pr.risks %>
   <% end %>
 <% end %>
