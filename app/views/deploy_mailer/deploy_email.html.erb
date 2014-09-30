@@ -4,8 +4,11 @@
 
 <p>The detailed log can be viewed <%= link_to 'here', project_deploy_url(@project, @deploy) %></p>
 
-<h3>Risk</h3>
+<h2>Pull Requests</h2>
+<%= render 'changeset/pull_requests', pull_requests: @changeset.pull_requests, type: "deploy" %>
+
+<h2>Risks</h2>
 <%= render 'changeset/risks', pull_requests: @changeset.risky_pull_requests, type: "deploy" %>
 
-<h3>Commits</h3>
+<h2>Commits</h2>
 <%= render 'changeset/commits', changeset: @changeset %>
