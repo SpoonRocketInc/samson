@@ -1,4 +1,5 @@
 class DeployMailer < ApplicationMailer
+  default from: ENV["DEPLOY_MAILER_ADDRESS"]
 
   add_template_helper(DeploysHelper)
   add_template_helper(ApplicationHelper)
