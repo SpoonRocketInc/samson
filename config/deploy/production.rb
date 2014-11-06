@@ -1,6 +1,6 @@
 set :stage, :production
 
-set :rvm_ruby_version, '2.1.2'      # Defaults to: 'default'
+set :rvm_ruby_version, '2.1.4'      # Defaults to: 'default'
 set :rvm_map_bins, %w{gem rake ruby bundle}
 set :bundle_bins, %w{gem rake ruby bundle}
 
