@@ -5,10 +5,12 @@ describe ReleaseService, :model do
   let(:author) { users(:deployer) }
   let(:service) { ReleaseService.new(project) }
   let(:commit) { "abcd" }
-  let(:release_params_used) { [] }
+  let(:release_tagger) { stub("release_tagger") }
+  let(:tag_release_called) { [] }
 
   before do
-    GITHUB.stubs(:create_release).capture(release_params_used)
+    ReleaseTagger.stubs(:new).with(project).returns(release_tagger)
+    release_tagger.stubs(:tag_release!).capture(tag_release_called)
   end
 
   it "creates a new release" do
@@ -21,7 +23,7 @@ describe ReleaseService, :model do
 
   it "tags the release" do
     release = service.create_release(commit: commit, author: author)
-    assert_equal [[project.github_repo, 'v1', target_commitish: commit]], release_params_used
+    assert_equal [[release]], tag_release_called
   end
 
   it "deploys the commit to stages if they're configured to" do
