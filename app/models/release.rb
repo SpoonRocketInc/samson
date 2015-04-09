@@ -43,7 +43,11 @@ class Release < ActiveRecord::Base
   private
 
   def assign_release_number
-    latest_release_number = project.releases.last.try(:number) || 0
+    if project.heroku_app_name.present?
+      heroku_release_number = `heroku releases --app #{project.heroku_app_name} | sed -n 2p | awk '{print $1}'`.strip
+      latest_release_number = heroku_release_number.match(/v(\d+)/)[1].to_i rescue nil
+    end
+    latest_release_number ||= project.releases.last.try(:number) || 0
     self.number = latest_release_number + 1
   end
 end
