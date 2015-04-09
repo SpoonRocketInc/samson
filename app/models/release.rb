@@ -40,8 +40,6 @@ class Release < ActiveRecord::Base
     find_by_number!(version[/\Av(\d+)\Z/, 1].to_i)
   end
 
-  private
-
   def assign_release_number
     if project.heroku_app_name.present?
       heroku_release_number = `heroku releases --app #{project.heroku_app_name} | sed -n 2p | awk '{print $1}'`.strip
