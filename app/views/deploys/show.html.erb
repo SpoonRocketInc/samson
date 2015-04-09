@@ -6,7 +6,7 @@
   <%= render 'header' %>
 </div>
 
-<ul id="deploy-tabs" class="nav nav-tabs" data-changeset-url="<%= changeset_project_deploy_url(@project, @deploy) %>">
+<ul id="deploy-tabs" class="nav nav-tabs" data-changeset-url="<%= changeset_project_deploy_url(@project, @deploy, protocol: 'https') %>">
   <li class="active"><a href="#output" data-toggle="tab">Output</a></li>
   <li><a href="#files" data-type="github" data-toggle="tab">Files</a></li>
   <li><a href="#commits" data-type="github" data-toggle="tab">Commits</a></li>
