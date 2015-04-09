@@ -14,6 +14,7 @@ class ReleasesController < ApplicationController
 
   def new
     @release = @project.releases.build
+    @release.number = @release.assign_release_number
   end
 
   def create
